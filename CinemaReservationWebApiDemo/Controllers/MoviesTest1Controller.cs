@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaReservationWebApiDemo.Controllers
 {
+    //All methods in this controller are tested in Postman and working just fine.
     [Route("api/[controller]")]
     [ApiController]
     public class MoviesTest1Controller : ControllerBase
     {
-
         //make sure to add static otherwise the data cannot be cached and displayed correctly
         private static List<MovieTest1> movies = new List<MovieTest1>
         {
