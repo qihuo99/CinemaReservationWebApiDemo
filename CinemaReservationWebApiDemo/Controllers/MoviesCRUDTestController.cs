@@ -23,46 +23,46 @@ namespace CinemaReservationWebApiDemo.Controllers
             _dbContext = dbContext;
         }
 
-        // GET: api/<MoviesCRUDTestController>
-        [HttpGet]
-        public IEnumerable<MovieTest1> Get()
-        {
-            return _dbContext.Movies;
-        }
+        //// GET: api/<MoviesCRUDTestController>
+        //[HttpGet]
+        //public IEnumerable<MovieTest1> Get()
+        //{
+        //    return _dbContext.Movies;
+        //}
 
-        // GET api/<MoviesCRUDTestController>/5
-        [HttpGet("{id}")]
-        public MovieTest1 Get(int id)
-        {
-            var movie = _dbContext.Movies.Find(id); 
-            return movie;
-        }
+        //// GET api/<MoviesCRUDTestController>/5
+        //[HttpGet("{id}")]
+        //public MovieTest1 Get(int id)
+        //{
+        //    var movie = _dbContext.Movies.Find(id); 
+        //    return movie;
+        //}
 
-        // POST api/<MoviesCRUDTestController>
-        [HttpPost]
-        public void Post([FromBody] MovieTest1 movieObj)
-        {
-            _dbContext.Movies.Add(movieObj);
-            _dbContext.SaveChanges();
-        }
+        //// POST api/<MoviesCRUDTestController>
+        //[HttpPost]
+        //public void Post([FromBody] MovieTest1 movieObj)
+        //{
+        //    _dbContext.Movies.Add(movieObj);
+        //    _dbContext.SaveChanges();
+        //}
 
-        // PUT api/<MoviesCRUDTestController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] MovieTest1 movieObj)
-        {
-            var movie = _dbContext.Movies.Find(id);
-            movie.Name = movieObj.Name;
-            movie.Language = movieObj.Language;
-            _dbContext.SaveChanges();
-        }
+        //// PUT api/<MoviesCRUDTestController>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] MovieTest1 movieObj)
+        //{
+        //    var movie = _dbContext.Movies.Find(id);
+        //    movie.Name = movieObj.Name;
+        //    movie.Language = movieObj.Language;
+        //    _dbContext.SaveChanges();
+        //}
 
-        // DELETE api/<MoviesCRUDTestController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            var movie = _dbContext.Movies.Find(id);
-            _dbContext.Movies.Remove(movie);
-            _dbContext.SaveChanges();
-        }
+        //// DELETE api/<MoviesCRUDTestController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //    var movie = _dbContext.Movies.Find(id);
+        //    _dbContext.Movies.Remove(movie);
+        //    _dbContext.SaveChanges();
+        //}
     }
 }

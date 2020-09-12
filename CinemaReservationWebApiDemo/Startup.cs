@@ -28,7 +28,7 @@ namespace CinemaReservationWebApiDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<CinemaDBContext>(option => option.UseSqlServer(@"Data Source=LAPTOP-UH2ADJKS\SQLEXPRESS2017;Initial Catalog=CinemaDB;Integrated Security=true;"));
+            services.AddDbContext<CinemaDBContext>(option => option.UseSqlServer(@"Data Source=LAPTOP-UH2ADJKS\SQLEXPRESS2017;Initial Catalog=CinemaReservationDB;Integrated Security=true;"));
 
         }
 
@@ -51,7 +51,7 @@ namespace CinemaReservationWebApiDemo
             // If no specified db exists, a new db will be created, otherwise no
             // action will be taken.  Only use this method if you don't have to update
             // or make changes to your database in the future.
-            dbContext.Database.EnsureCreated();
+            //dbContext.Database.EnsureCreated();
 
             app.UseEndpoints(endpoints =>
             {

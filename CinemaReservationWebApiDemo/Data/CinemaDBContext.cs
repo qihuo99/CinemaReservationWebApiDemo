@@ -14,7 +14,9 @@ namespace CinemaReservationWebApiDemo.Data
 
         }
 
-        public DbSet<MovieTest1> Movies { get; set; }
+        //public DbSet<MovieTest1> Movies { get; set; }
+
+        public DbSet<Movie> Movies { get; set; }
 
     }
 }

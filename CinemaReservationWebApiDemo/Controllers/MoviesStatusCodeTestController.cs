@@ -45,50 +45,50 @@ namespace CinemaReservationWebApiDemo.Controllers
             return "value";
         }
 
-        // POST api/<MoviesStatusCodeTestController>
-        [HttpPost]
-        public IActionResult Post([FromBody] MovieTest1 movieObj)
-        {
-            _dbContext.Movies.Add(movieObj);
-            _dbContext.SaveChanges();
-            return StatusCode(StatusCodes.Status201Created); //use 201 created code
-        }
+        //// POST api/<MoviesStatusCodeTestController>
+        //[HttpPost]
+        //public IActionResult Post([FromBody] MovieTest1 movieObj)
+        //{
+        //    _dbContext.Movies.Add(movieObj);
+        //    _dbContext.SaveChanges();
+        //    return StatusCode(StatusCodes.Status201Created); //use 201 created code
+        //}
 
         // PUT api/<MoviesStatusCodeTestController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] MovieTest1 movieObj)
-        {
-            var movie = _dbContext.Movies.Find(id);
-            if (movie == null)
-            {
-                return NotFound("No record found for this id.");
-            }
-            else
-            {
-                movie.Name = movieObj.Name;
-                movie.Language = movieObj.Language;
-                _dbContext.SaveChanges();
-                return Ok("Record Updated Successfully.");
-            }
-        }
+        //[HttpPut("{id}")]
+        //public IActionResult Put(int id, [FromBody] MovieTest1 movieObj)
+        //{
+        //    var movie = _dbContext.Movies.Find(id);
+        //    if (movie == null)
+        //    {
+        //        return NotFound("No record found for this id.");
+        //    }
+        //    else
+            //{
+            //    movie.Name = movieObj.Name;
+            //    movie.Language = movieObj.Language;
+            //    _dbContext.SaveChanges();
+            //    return Ok("Record Updated Successfully.");
+            //}
+        //}
 
-        // DELETE api/<MoviesStatusCodeTestController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var movie = _dbContext.Movies.Find(id);
+        //// DELETE api/<MoviesStatusCodeTestController>/5
+        //[HttpDelete("{id}")]
+        //public IActionResult Delete(int id)
+        //{
+        //    var movie = _dbContext.Movies.Find(id);
 
-            if (movie == null)
-            {
-                return NotFound("No record found for this id.");
-            }
-            else
-            {
-                _dbContext.Movies.Remove(movie);
-                _dbContext.SaveChanges();
-                return Ok("Record Deleted Successfully.");
-            }
+        //    if (movie == null)
+        //    {
+        //        return NotFound("No record found for this id.");
+        //    }
+        //    else
+        //    {
+        //        _dbContext.Movies.Remove(movie);
+        //        _dbContext.SaveChanges();
+        //        return Ok("Record Deleted Successfully.");
+        //    }
          
-        }
+        //}
     }
 }
