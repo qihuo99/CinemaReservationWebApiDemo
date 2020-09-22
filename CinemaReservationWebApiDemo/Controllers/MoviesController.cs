@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using CinemaReservationWebApiDemo.Data;
 using CinemaReservationWebApiDemo.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -36,22 +39,56 @@ namespace CinemaReservationWebApiDemo.Controllers
         }
 
         // POST api/<MoviesController>
+        //[HttpPost]
+        //public void Post([FromBody] Movie movieObj)
+        //{
+        //    _dbContext.Movies.Add(movieObj);
+        //    _dbContext.SaveChanges();
+        //}
+
         [HttpPost]
-        public void Post([FromBody] Movie movieObj)
+        public IActionResult Post([FromForm] Movie movieObj)
         {
+            var guid = Guid.NewGuid();
+            var filePath = Path.Combine("wwwroot\\images\\", guid+".jpg");
+            if (movieObj.Image != null)
+            {
+                var fileStream = new FileStream(filePath, FileMode.Create);
+                movieObj.Image.CopyTo(fileStream);                
+            }
+            movieObj.ImageUrl = filePath;
             _dbContext.Movies.Add(movieObj);
             _dbContext.SaveChanges();
+
+            return StatusCode(StatusCodes.Status201Created); //use 201 created code
+            //return Ok();
         }
 
         // PUT api/<MoviesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] MovieTest1 movieObj)
+        public IActionResult Put(int id, [FromForm] Movie movieObj)
         {
             var movie = _dbContext.Movies.Find(id);
-            movie.Name = movieObj.Name;
-            movie.Language = movieObj.Language;
-            movie.Rating = movieObj.Rating;
-            _dbContext.SaveChanges();
+            if (movie == null)
+            {
+                return NotFound("No record found for this id.");
+            }
+            else 
+            {
+                var guid = Guid.NewGuid();
+                var filePath = Path.Combine("wwwroot\\images\\", guid + ".jpg");
+                if (movieObj.Image != null)
+                {
+                    var fileStream = new FileStream(filePath, FileMode.Create);
+                    movieObj.Image.CopyTo(fileStream);
+                }
+
+                movie.Name = movieObj.Name;
+                movie.Language = movieObj.Language;
+                movie.Rating = movieObj.Rating;
+                _dbContext.SaveChanges();
+                return Ok("Record updated successfully.");
+            }
         }
 
         // DELETE api/<MoviesController>/5
